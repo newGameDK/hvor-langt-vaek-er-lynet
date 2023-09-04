@@ -1,51 +1,36 @@
+let startTid = 0
+let slutTid = 0
+let beregnetTid = 0
+let afstand = 0
 input.onButtonPressed(Button.A, function () {
     // Start tidsmåling når knap A trykkes
-    startTime = input.runningTime()
-    lightningIcon.showImage(0)
-})
-input.onButtonPressed(Button.AB, function () {
-    // Nulstil tiden og afstanden ved tryk på A+B
-    startTime = 0
-    endTime = 0
-    distance = 0
-    basic.showString("R")
+    startTid = input.runningTime()
+    basic.showLeds(`
+        . . . # .
+        . . # . .
+        . # . . .
+        . . # . .
+        . # . . .
+        `)
 })
 input.onButtonPressed(Button.B, function () {
     // Stop tidsmåling når knap B trykkes
-    endTime = input.runningTime()
-    // Stop tidsmåling når knap B trykkes
-    testVariabel = 0
+    slutTid = input.runningTime()
     // Konverter til sekunder
-    elapsedTime = (endTime - startTime) / 1000
+    beregnetTid = slutTid - startTid
+    // Konverter til sekunder
+    beregnetTid = beregnetTid / 1000
     // Beregn afstanden
     // Hastighed af lyd i luft er 343 m/s
-    distance = 343 * elapsedTime
-    // Vis resultatet
-    noteIcon.showImage(testVariabel)
+    afstand = 343 * beregnetTid
+    basic.showLeds(`
+        . . # # .
+        . . # . .
+        . . # . .
+        . # # . .
+        . # # . .
+        `)
     // Vent et sekund for at vise noden
     basic.pause(1000)
-    basic.showNumber(distance)
+    basic.showNumber(afstand)
 })
-let elapsedTime = 0
-let testVariabel = 0
-let distance = 0
-let endTime = 0
-let startTime = 0
-let noteIcon: Image = null
-let lightningIcon: Image = null
-// Definer et simpelt lyn-ikon
-lightningIcon = images.createImage(`
-    . . # . .
-    . # . . .
-    . . # . .
-    . . . # .
-    . . # . .
-    `)
-// Definer et simpelt node-ikon
-noteIcon = images.createImage(`
-    . . # # .
-    . . # . .
-    . . # . .
-    . # # . .
-    . # # . .
-    `)
