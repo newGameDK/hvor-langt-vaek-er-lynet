@@ -11,8 +11,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "tutorialHvorLangtVaekErLynet.md",
-        "_locales/da/tutorialHvorLangtVaekErLynet.md"
+        "tutorialHvorLangtVaekErLynet.md"
     ],
     "testFiles": [
         "test.ts"
