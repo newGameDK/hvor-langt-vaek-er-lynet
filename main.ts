@@ -13,18 +13,21 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     // Stop tidsmåling når knap B trykkes
     endTime = input.runningTime()
+    // Stop tidsmåling når knap B trykkes
+    testVariabel = 0
     // Konverter til sekunder
     elapsedTime = (endTime - startTime) / 1000
     // Beregn afstanden
     // Hastighed af lyd i luft er 343 m/s
     distance = 343 * elapsedTime
     // Vis resultatet
-    noteIcon.showImage(0)
+    noteIcon.showImage(testVariabel)
     // Vent et sekund for at vise noden
     basic.pause(1000)
     basic.showNumber(distance)
 })
 let elapsedTime = 0
+let testVariabel = 0
 let distance = 0
 let endTime = 0
 let startTime = 0
